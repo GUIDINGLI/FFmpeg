@@ -97,7 +97,9 @@ ifeq ($(CONFIG_FFPROBE), yes)
 endif
 
 CFLAGS += ${shell $(INCDIR) $(INCDIROPT) "$(CC)" $(CURDIR)}
-CFLAGS += -w -Os -DHAVE_AV_CONFIG_H
+CFLAGS += -Os -DHAVE_AV_CONFIG_H
+CFLAGS += -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -Wno-unused-const-variable -Wno-bool-operation -Wno-char-subscripts -fno-math-errno -fno-signed-zeros -fno-tree-vectorize -Wno-maybe-uninitialized -Wno-shadow -Wno-implicit-function-declaration -Wno-deprecated-declarations -Wno-unused-variable -Wno-missing-prototypes
+#CFLAGS += -Wno-pointer-to-int-cast -Wno-incompatible-pointer-types
 
 libavutil/ffversion.h .version:
 	$(Q)ffbuild/version.sh . libavutil/ffversion.h $(EXTRA_VERSION)
