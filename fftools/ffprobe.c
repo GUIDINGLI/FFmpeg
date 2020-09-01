@@ -3189,7 +3189,7 @@ static inline void mark_section_show_entries(SectionID section_id,
 
     section->show_all_entries = show_all_entries;
     if (show_all_entries) {
-        SectionID *id;
+        int *id;
         for (id = section->children_ids; *id != -1; id++)
             mark_section_show_entries(*id, show_all_entries, entries);
     } else {
@@ -3469,7 +3469,7 @@ static int opt_pretty(void *optctx, const char *opt, const char *arg)
 
 static void print_section(SectionID id, int level)
 {
-    const SectionID *pid;
+    const int *pid;
     const struct section *section = &sections[id];
     printf("%c%c%c",
            section->flags & SECTION_FLAG_IS_WRAPPER           ? 'W' : '.',
